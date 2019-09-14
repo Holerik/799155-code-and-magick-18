@@ -8,7 +8,7 @@
   <title>Код и Магия</title>
 </head>
 <body>
-
+  <canvas id="canvas" width="540" height="280"></canvas>
 <header>
   <svg style="display: none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 62
         86">
@@ -181,7 +181,7 @@
   </div>
 </template>
 
-<script> 
+<script>
 var fireballSize = 22;
 var getFireballSpeed = function(left) {
   return left === true ? 5 : 2;
@@ -195,10 +195,12 @@ var getWizardX = function(width) {
   return width / 2 - wizardWidth / 2;
 }
 var getWizardY = function(height) {
-  return 0.66667 * height;
+  return 0.33333 * height;
 }
 </script>
-<script src="js/game.js"></script>
+
+<script src="js/stat.js" defer></script>
+<script src="js/game.js" defer></script>
 
 </body>
 </html>
