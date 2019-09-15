@@ -4,19 +4,23 @@ var CLOUD_TOP = 10;
 var CLOUD_WIDTH = 420;
 var CLOUD_HEIGHT = 270;
 var SHADOW_WIDTH = 10;
-var MSG_LEFT = CLOUD_LEFT + 20;
-var MSG_TOP = CLOUD_TOP + 20;
+var MSG_SHIFT = 20;
+var MSG_LEFT = CLOUD_LEFT + MSG_SHIFT;
+var MSG_TOP = CLOUD_TOP + MSG_SHIFT;
 var BAR_WIDTH = 40;
 var BAR_GAP = 50;
 var GIST_HEIGHT = 150;
 var TEXT_YSTEP = 20;
 var FONT_GAP = 30;
 
+var renderCloud = function (ctx, x, y, color) {
+  ctx.fillStyle = color;
+  ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
+};
+
 var renderStatistics = function (ctx, names, times) {
-  ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
-  ctx.fillRect(CLOUD_LEFT + SHADOW_WIDTH, CLOUD_TOP + SHADOW_WIDTH, CLOUD_WIDTH, CLOUD_HEIGHT);
-  ctx.fillStyle = 'rgb(255, 255, 255)';
-  ctx.fillRect(CLOUD_LEFT, CLOUD_TOP, CLOUD_WIDTH, CLOUD_HEIGHT);
+  renderCloud(ctx, CLOUD_LEFT + SHADOW_WIDTH, CLOUD_TOP + SHADOW_WIDTH, 'rgba(0, 0, 0, 0.7)');
+  renderCloud(ctx, CLOUD_LEFT, CLOUD_TOP, '#fff');
   ctx.font = '16px PT Mono';
   ctx.textBaseline = 'hanging';
   ctx.fillStyle = 'rgb(0, 0, 0)';
