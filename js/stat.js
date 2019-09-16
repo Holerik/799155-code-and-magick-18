@@ -59,3 +59,5 @@ var renderStatistics = function (ctx, names, times) {
     ctx.fillText(Math.ceil(times[i]).toString(), CLOUD_LEFT + barShift, txtBottom - barHeight - FONT_GAP);
   }
 };
+
+window.renderStatistics = renderStatistics;
