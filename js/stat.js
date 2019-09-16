@@ -14,7 +14,7 @@ var TEXT_YSTEP = 20;
 var FONT_GAP = 30;
 var HSL_COLOR = 240;
 
-var randomHsl = function (hslColor) {
+var getRandomHsl = function (hslColor) {
   return 'hsl(' + hslColor.toString() + ', ' + Math.floor(Math.random() * 100).toString() + '%, ' + '50%)';
 };
 
@@ -33,7 +33,7 @@ var getMaxValue = function (values) {
   return maxValue;
 };
 
-var renderBar = function (ctx, color, x, y, width, height) {
+var renderStatBar = function (ctx, color, x, y, width, height) {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, width, height);
 };
@@ -53,8 +53,8 @@ var renderStatistics = function (ctx, names, times) {
     var barShift = BAR_GAP * (i + 1) + BAR_WIDTH * i;
     var barHeight = Math.ceil(times[i] * barScale);
     ctx.fillText(names[i], CLOUD_LEFT + barShift, txtBottom);
-    var color = names[i] === 'Вы' ? 'rgba(255, 0, 0, 1)' : randomHsl(HSL_COLOR);
-    renderBar(ctx, color, CLOUD_LEFT + barShift, txtBottom - barHeight - TEXT_YSTEP / 2, BAR_WIDTH, barHeight);
+    var color = names[i] === 'Вы' ? 'rgba(255, 0, 0, 1)' : getRandomHsl(HSL_COLOR);
+    renderStatBar(ctx, color, CLOUD_LEFT + barShift, txtBottom - barHeight - TEXT_YSTEP / 2, BAR_WIDTH, barHeight);
     ctx.fillStyle = '#000';
     ctx.fillText(Math.ceil(times[i]).toString(), CLOUD_LEFT + barShift, txtBottom - barHeight - FONT_GAP);
   }
