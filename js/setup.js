@@ -136,14 +136,17 @@ userNameInput.addEventListener('invalid', function () {
 var wizardCoat = document.querySelector('.setup-wizard .wizard-coat');
 wizardCoat.addEventListener('click', function () {
   wizardCoat.style.fill = getRandomCoatColor(COAT_COLORS);
+  document.querySelector('input[name="coat-color"]').value = wizardCoat.style.fill;
 });
 
 var wizardEyes = document.querySelector('.setup-wizard .wizard-eyes');
 wizardEyes.addEventListener('click', function () {
   wizardEyes.style.fill = getRandomEyesColor(EYES_COLORS);
+  document.querySelector('input[name="eyes-color"]').value = wizardEyes.style.fill;
 });
 
 var fireBall = document.querySelector('.setup-fireball-wrap');
 fireBall.addEventListener('click', function () {
   fireBall.style.background = getRandomFireballColor(FIREBALL_COLORS);
+  document.querySelector('input[name="fireball-color"]').value = fireBall.style.background;
 });
