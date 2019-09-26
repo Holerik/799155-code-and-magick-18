@@ -121,7 +121,7 @@ closeButton.addEventListener('click', function () {
 });
 
 // для ограничений на ввод используем стандартные возможности форм HTML5
-userNameInput.addEventListener('invalid', function (evt) {
+userNameInput.addEventListener('invalid', function () {
   if (userNameInput.validity.tooShort) {
     userNameInput.setCustomValidity('Имя должно состоять минимум из 2-х букв');
   } else if (userNameInput.validity.tooLong) {
