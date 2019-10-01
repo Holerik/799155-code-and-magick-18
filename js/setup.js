@@ -6,7 +6,6 @@ var WIZARD_SURNAMES = ['да Марья', 'Верон', 'Мирабелла', '�
 var COAT_COLORS = ['101, 137, 164', '241, 43, 107', '146, 100, 161', '56, 159, 117', '215, 210, 55', '0, 0, 0'];
 var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
-
 var DOM_VK_ENTER = 0x0D;
 var DOM_VK_ESC = 0x1B;
 
@@ -122,20 +121,15 @@ var closeKeydownHandler = function (evt) {
 
 setupClose.addEventListener('keydown', closeKeydownHandler);
 
-// отправка данных формы после проверки валидации
+// отправка данных формы
 var sendFormData = function () {
-  if (form.checkValidity()) {
-    form.submit();
-    return true;
-  }
-  return false;
+  form.submit();
 };
 
 var submitClickHandler = function (evt) {
-  if (sendFormData()) {
-    closePopup();
-  } else {
-    evt.preventDefault();
+  evt.preventDefault();
+  if (form.repotValidity()) {
+    sendFormData();
   }
 };
 
@@ -152,6 +146,10 @@ userNameInput.addEventListener('invalid', function () {
   } else {
     userNameInput.setCustomValidity('');
   }
+});
+
+userNameInput.addEventListener('input', function (evt) {
+  evt.target.checkValidity();
 });
 
 var setRandomCoatColor = function () {
