@@ -6,8 +6,8 @@
   var DOM_VK_ESC = 0x1B;
 
   window.setup = document.querySelector('.setup');
-  window.setup_top = window.setup.style.top;
-  window.setup_left = window.setup.style.left;
+  window.setupTop = window.setup.style.top;
+  window.setupLeft = window.setup.style.left;
   var setupOpen = document.querySelector('.setup-open');
   var setupClose = window.setup.querySelector('.setup-close');
   var userNameInput = window.setup.querySelector('.setup-user-name');
@@ -31,8 +31,8 @@
   var openPopup = function () {
     if (window.setup.classList.contains('hidden')) {
       window.setup.classList.remove('hidden');
-      window.setup.style.top = window.setup_top;
-      window.setup.style.left = window.setup_left;
+      window.setup.style.top = window.setupTop;
+      window.setup.style.left = window.setupLeft;
       document.addEventListener('keydown', onPopupPressEsc);
     }
   };
