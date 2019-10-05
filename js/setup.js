@@ -59,11 +59,10 @@
     return wizArray;
   };
 
-  // var setup = document.querySelector('.setup');
   var similarListElem = document.querySelector('.setup-similar-list');
   var similarWizardTempl = document.querySelector('#similar-wizard-template')
-.content
-.querySelector('.setup-similar-item');
+    .content
+    .querySelector('.setup-similar-item');
   wizards = createWizardData(WIZARD_COUNT);
 
   var fragment = document.createDocumentFragment();
@@ -72,92 +71,6 @@
   }
   similarListElem.appendChild(fragment);
 
-  /*
-var setupOpen = document.querySelector('.setup-open');
-var setupClose = setup.querySelector('.setup-close');
-var userNameInput = setup.querySelector('.setup-user-name');
-var submitButton = setup.querySelector('.setup-submit');
-var form = document.querySelector('.setup-wizard-form');
-
-var closePopup = function () {
-  if (userNameInput === document.activeElement) {
-    return;
-  }
-  setup.classList.add('hidden');
-  document.removeEventListener('keydown', onPopupPressEsc);
-};
-
-var onPopupPressEsc = function (evt) {
-  if (evt.keyCode === DOM_VK_ESC) {
-    closePopup();
-  }
-};
-
-var openPopup = function () {
-  setup.classList.remove('hidden');
-  document.addEventListener('keydown', onPopupPressEsc);
-};
-
-
-var openClickHandler = function () {
-  openPopup();
-};
-
-setupOpen.addEventListener('click', openClickHandler);
-
-var openKeydownHandler = function (evt) {
-  if (evt.keyCode === DOM_VK_ENTER) {
-    openPopup();
-  }
-};
-
-setupOpen.addEventListener('keydown', openKeydownHandler);
-
-var closeClickHandler = function () {
-  closePopup();
-};
-
-setupClose.addEventListener('click', closeClickHandler);
-
-var closeKeydownHandler = function (evt) {
-  if (evt.keyCode === DOM_VK_ENTER) {
-    closePopup();
-  }
-};
-
-setupClose.addEventListener('keydown', closeKeydownHandler);
-
-// отправка данных формы
-var sendFormData = function () {
-  form.submit();
-};
-
-var submitClickHandler = function (evt) {
-  evt.preventDefault();
-  if (form.repotValidity()) {
-    sendFormData();
-  }
-};
-
-submitButton.addEventListener('click', submitClickHandler);
-
-// для ограничений на ввод используем стандартные возможности форм HTML5
-userNameInput.addEventListener('invalid', function () {
-  if (userNameInput.validity.tooShort) {
-    userNameInput.setCustomValidity('Имя должно состоять минимум из 2-х букв');
-  } else if (userNameInput.validity.tooLong) {
-    userNameInput.setCustomValidity('Длина имени не должна превышать 25-ти символов');
-  } else if (userNameInput.validity.valueMissing) {
-    userNameInput.setCustomValidity('Обязательное поле');
-  } else {
-    userNameInput.setCustomValidity('');
-  }
-});
-
-userNameInput.addEventListener('input', function (evt) {
-  evt.target.checkValidity();
-});
-*/
   var setRandomCoatColor = function () {
     wizardCoat.style.fill = getRandomCoatColor(COAT_COLORS);
     document.querySelector('input[name="coat-color"]').value = wizardCoat.style.fill;

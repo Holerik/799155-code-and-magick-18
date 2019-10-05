@@ -6,7 +6,6 @@
     x: 0,
     y: 0
   };
-  // var setup = document.querySelector('.setup');
   var setupHandler = window.setup.querySelector('.upload');
   var dragget = false;
   var msdown = false;

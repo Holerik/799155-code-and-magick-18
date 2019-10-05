@@ -5,7 +5,9 @@
   var DOM_VK_ENTER = 0x0D;
   var DOM_VK_ESC = 0x1B;
 
+  // окно настройки волшебника
   window.setup = document.querySelector('.setup');
+  // координаты начального положения окна
   window.setupTop = window.setup.style.top;
   window.setupLeft = window.setup.style.left;
   var setupOpen = document.querySelector('.setup-open');
@@ -73,7 +75,7 @@
 
   var submitClickHandler = function (evt) {
     evt.preventDefault();
-    if (window.form.repotValidity()) {
+    if (window.form.reportValidity()) {
       sendFormData();
     }
   };
