@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Mono&subset=latin,cyrillic">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/msgbox.css">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <title>Код и Магия</title>
 </head>
@@ -66,6 +67,14 @@
     <img src="./img/user-1.jpg" class="setup-open-icon" tabindex="0">
   </div>
 </header>
+
+<div id="msgbox-form-container" class="hidden">
+  <form id="msgbox-form">
+    <div id="msgbox-message"></div>
+    <h4 class="msgbox-message">Сообщние</h4>
+    <input type="button" name="cancel" value="Закрыть">
+  </form>
+</div>
 
 <div class="overlay setup hidden">
   <form class="setup-wizard-form"
@@ -201,6 +210,8 @@ var getWizardY = function(height) {
 }
 </script>
 
+<script src="js/msgbox.js" defer></script>
+<script src="js/backend.js" defer></script>
 <script src="js/popups.js" defer></script>
 <script src="js/setup.js" defer></script>
 <script src="js/move.js" defer></script>
