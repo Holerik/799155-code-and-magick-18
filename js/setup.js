@@ -14,16 +14,16 @@
   };
 
   var getRandomCoatColor = function (coatColors) {
-    var color = getRandomElement(coatColors);
+    var color = window.getRandomElement(coatColors);
     return 'rgb(' + color + ')';
   };
 
   var getRandomEyesColor = function (eyeColors) {
-    return getRandomElement(eyeColors);
+    return window.getRandomElement(eyeColors);
   };
 
   var getRandomFireballColor = function (fireballColors) {
-    return getRandomElement(fireballColors);
+    return window.getRandomElement(fireballColors);
   };
 
   window.similarListElem = document.querySelector('.setup-similar-list');
