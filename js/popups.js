@@ -2,8 +2,9 @@
 'use strict';
 
 (function () {
-  var DOM_VK_ENTER = 0x0D;
-  var DOM_VK_ESC = 0x1B;
+  window.DOM_VK_ENTER = 0x0D;
+  window.DOM_VK_ESC = 0x1B;
+  var WIZARD_COUNT = 4;
 
   // окно настройки волшебника
   window.setup = document.querySelector('.setup');
@@ -25,9 +26,34 @@
   };
 
   var onPopupPressEsc = function (evt) {
-    if (evt.keyCode === DOM_VK_ESC) {
+    if (evt.keyCode === window.DOM_VK_ESC) {
       closePopup();
     }
+  };
+
+  var onLoad = function (data) {
+    // удалим предыдущих магов
+    var wizards = window.similarListElem.querySelectorAll('.setup-similar-item');
+    for (var i = 0; i < wizards.length; i++) {
+      window.similarListElem.removeChild(wizards[i]);
+    }
+    // добавим новых, выбанных случайным образом из
+    // полученных по запросу с сервера
+    var fragment = document.createDocumentFragment();
+    for (i = 0; i < WIZARD_COUNT; i++) {
+      var wizard = window.getRandomElement(data);
+      fragment.appendChild(window.renderWizard(wizard));
+    }
+    window.similarListElem.appendChild(fragment);
+    document.querySelector('.setup-similar').classList.remove('hidden');
+  };
+
+  var onLoadAfterSave = function () {
+    closePopup();
+  };
+
+  var onError = function (message) {
+    window.showMessage(message, closePopup);
   };
 
   var openPopup = function () {
@@ -37,6 +63,8 @@
       window.setup.style.left = window.setupLeft;
       document.addEventListener('keydown', onPopupPressEsc);
     }
+    // запрос на загрузку магов с сервера
+    window.load(onLoad, onError);
   };
 
 
@@ -47,7 +75,7 @@
   setupOpen.addEventListener('click', openClickHandler);
 
   var openKeydownHandler = function (evt) {
-    if (evt.keyCode === DOM_VK_ENTER) {
+    if (evt.keyCode === window.DOM_VK_ENTER) {
       openPopup();
     }
   };
@@ -61,7 +89,7 @@
   setupClose.addEventListener('click', closeClickHandler);
 
   var closeKeydownHandler = function (evt) {
-    if (evt.keyCode === DOM_VK_ENTER) {
+    if (evt.keyCode === window.DOM_VK_ENTER) {
       closePopup();
     }
   };
@@ -70,7 +98,7 @@
 
   // отправка данных формы
   var sendFormData = function () {
-    window.form.submit();
+    window.save(new FormData(window.form), onLoadAfterSave, onError);
   };
 
   var submitClickHandler = function (evt) {

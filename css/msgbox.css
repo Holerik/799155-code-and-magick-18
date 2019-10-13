@@ -1,0 +1,27 @@
+.msgbox-message {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#msgbox-form {
+  position: absolute;
+  z-index: 10;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 5px;
+  background-color: rgb(209, 24, 24);
+  width: 300px;
+  margin: 0 auto;
+  box-shadow: 0 0 10px #cccccc;
+  z-index: 120;
+  text-align: center;
+}
+
+input[name="cancel"] {
+  display: inline-block;
+  margin: 5px 5px;
+  color: #ffffff;
+  background: #2c3e50;
+  border: none;
+}
