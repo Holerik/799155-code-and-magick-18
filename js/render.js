@@ -24,7 +24,7 @@
     }
     var fragment = document.createDocumentFragment();
     var wizardCount = data.length > 4 ? 4 : data.length;
-    for (var i = 0; i < wizardCount; i++) {
+    for (i = 0; i < wizardCount; i++) {
       fragment.appendChild(renderWizard(data[i]));
     }
     similarList.appendChild(fragment);

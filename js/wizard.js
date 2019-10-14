@@ -5,8 +5,8 @@
   var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 
   var wizard = {
-    onEyesChange: function (color) {},
-    onCoatChange: function (color) {}
+    onEyesChange: function () {},
+    onCoatChange: function () {}
   };
 
   var getRandomIndex = function (upperLimit) {
