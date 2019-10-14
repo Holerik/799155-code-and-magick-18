@@ -4,8 +4,9 @@
 (function () {
   window.DOM_VK_ENTER = 0x0D;
   window.DOM_VK_ESC = 0x1B;
-  var WIZARD_COUNT = 4;
 
+  // нефильтрованные данные с сервера
+  window.wizards = [];
   // окно настройки волшебника
   window.setup = document.querySelector('.setup');
   // координаты начального положения окна
@@ -32,20 +33,8 @@
   };
 
   var onLoad = function (data) {
-    // удалим предыдущих магов
-    var wizards = window.similarListElem.querySelectorAll('.setup-similar-item');
-    for (var i = 0; i < wizards.length; i++) {
-      window.similarListElem.removeChild(wizards[i]);
-    }
-    // добавим новых, выбанных случайным образом из
-    // полученных по запросу с сервера
-    var fragment = document.createDocumentFragment();
-    for (i = 0; i < WIZARD_COUNT; i++) {
-      var wizard = window.getRandomElement(data);
-      fragment.appendChild(window.renderWizard(wizard));
-    }
-    window.similarListElem.appendChild(fragment);
-    document.querySelector('.setup-similar').classList.remove('hidden');
+    window.wizards = data.slice();
+    window.render(data);
   };
 
   var onLoadAfterSave = function () {
